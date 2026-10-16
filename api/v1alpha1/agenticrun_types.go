@@ -263,7 +263,7 @@ type AgenticRunStep struct {
 	// +optional
 	// +kubebuilder:validation:MinLength=1
 	// +kubebuilder:validation:MaxLength=253
-	// +kubebuilder:validation:XValidation:rule="!format.dns1123Subdomain().validate(self).hasValue()",message="must be a valid DNS subdomain: lowercase alphanumeric characters, hyphens, and dots"
+	// +kubebuilder:validation:XValidation:rule="self.matches('^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$')",message="must be a valid DNS subdomain: lowercase alphanumeric characters, hyphens, and dots"
 	Agent string `json:"agent,omitempty"`
 }
 
@@ -309,7 +309,7 @@ type AgenticRunSpec struct {
 	// +optional
 	// +kubebuilder:validation:MinLength=1
 	// +kubebuilder:validation:MaxLength=236
-	// +kubebuilder:validation:XValidation:rule="!format.dns1123Subdomain().validate(self).hasValue()",message="targetCluster must be a valid DNS subdomain"
+	// +kubebuilder:validation:XValidation:rule="self.matches('^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$')",message="must be a valid DNS subdomain: lowercase alphanumeric characters, hyphens, and dots"
 	TargetCluster string `json:"targetCluster,omitempty"`
 
 	// analysisOutput configures the analysis step's structured output.

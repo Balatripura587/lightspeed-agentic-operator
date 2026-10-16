@@ -234,7 +234,7 @@ type RBACRule struct {
 	// +optional
 	// +kubebuilder:validation:MinLength=1
 	// +kubebuilder:validation:MaxLength=63
-	// +kubebuilder:validation:XValidation:rule="!format.dns1123Label().validate(self).hasValue()",message="must be a valid DNS label: lowercase alphanumeric characters and hyphens, starting with an alphabetic character and ending with an alphanumeric character"
+	// +kubebuilder:validation:XValidation:rule="self.matches('^[a-z0-9]([-a-z0-9]*[a-z0-9])?$')",message="must be a valid DNS label: lowercase alphanumeric characters and hyphens"
 	Namespace string `json:"namespace,omitempty"`
 	// apiGroups are the API groups for this rule (e.g., "", "apps", "batch").
 	// The empty string "" represents the core API group (pods, services, etc.).
